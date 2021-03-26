@@ -47,7 +47,7 @@ export default function CreateAccount ({ navigation}){
       onPress = { ( ) => navigation.push("Home")}>
           <Text style={styles.loginText}>Create Account</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress = {() => navigation.push("LogIn")}>
           <Text style={styles.loginText}>You have an account?</Text>
         </TouchableOpacity>
       <StatusBar style="auto" />

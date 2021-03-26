@@ -13,9 +13,9 @@ export default function App() {
   return (
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name = "CreateAccount" component = {CreateAccount} />
           <Stack.Screen name = "LogIn" component = {Login} />
           <Stack.Screen name = "Home" component = {Home} />
+          <Stack.Screen name = "CreateAccount" component = {CreateAccount} />
         </Stack.Navigator>
       </NavigationContainer>
   );

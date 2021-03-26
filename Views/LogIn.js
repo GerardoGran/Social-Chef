@@ -30,7 +30,7 @@ export default function Login ({ navigation}){
           <Text style={styles.loginText}>LOGIN</Text>
           </TouchableOpacity>
           <TouchableOpacity>
-          <Text style={styles.loginText}>Doesn't have an account yet?</Text>
+          <Text style={styles.loginText} onPress = {() => navigation.push("CreateAccount")}>Doesn't have an account yet?</Text>
         </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
