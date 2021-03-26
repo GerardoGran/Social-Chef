@@ -1,9 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
-import {NavigationContainer } from '@react-navigation/native';
 
-export default function LogIn(){
+export default function Login ({ navigation}){
   const [state, setState] = useState({email: "", password: ""})
 
   return (
@@ -27,7 +26,7 @@ export default function LogIn(){
         <Text style = {styles.forgot}>Forgot your Password?</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.loginBtn}
-      onPress = { ( ) => this.props.navigation.navigate('Home')}>
+      onPress = { ( ) => navigation.push("Home")}>
           <Text style={styles.loginText}>LOGIN</Text>
           </TouchableOpacity>
           <TouchableOpacity>
