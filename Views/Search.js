@@ -7,6 +7,7 @@ import {Searchbar} from 'react-native-paper';
 const Search = ({navigation})=> {  
 
   useEffect(() => {
+    //must change to point to backend
     fetch('https://jsonplaceholder.typicode.com/posts')
       .then((response) => response.json())
       .then((responseJson) => {
