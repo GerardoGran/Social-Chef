@@ -18,7 +18,7 @@ export default function CreateAccount ({ navigation}){
       <View style = {styles.inputView}>
         <TextInput
         style = {styles.inputText}
-        placeholder = "NickName"
+        placeholder = "UserName"
         placeholderTextColor = "#003F5c"
         onChangeText = {(state) => setState({Nickname:state})}/>
       </View>

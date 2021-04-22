@@ -1,11 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-export default function Home() {
+export default function Home({navigation}) {
   return (
     <View style={styles.container}>
-      <Text>Your are at the home screen</Text>
+      <Text>You are at the home screen</Text>
+      <TouchableOpacity
+      onPress = { ( ) => navigation.push("Fridge")}>
+          <Text>Fridge</Text>
+          </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
   );

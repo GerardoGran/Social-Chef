@@ -11,7 +11,7 @@ export default function Login ({ navigation}){
       <View style = {styles.inputView}>
         <TextInput
         style = {styles.inputText}
-        placeholder = "Email or Nickname..."
+        placeholder = "Email or UserName..."
         placeholderTextColor = "#003F5c"
         onChangeText = {(state) => setState({email:state})}/>
       </View>
