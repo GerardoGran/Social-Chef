@@ -7,7 +7,7 @@ export default function Login ({ navigation}){
 
   return (
     <View style={styles.container}>
-      <View style = {styles.logo}>Welcome to Social Cheff</View>
+      <Text style = {styles.logo}>Welcome to Social Cheff</Text>
       <View style = {styles.inputView}>
         <TextInput
         style = {styles.inputText}
@@ -48,7 +48,9 @@ const styles = StyleSheet.create({
     fontWeight:"bold",
     fontSize:50,
     color:"#fb5b5a",
-    marginBottom:40
+    marginBottom:40,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   inputView:{
     width:"80%",

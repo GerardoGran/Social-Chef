@@ -1,10 +1,11 @@
 import * as React from 'react';
-import {Text, View, StyleSheet, TextInput, TouchableOpacity, CheckBox} from 'react-native';
+import Constants from 'expo-constants';
+import {Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 export default function Fridge() {
-const [itemList, setItemList, isSelected] = React.useState([]);
-const[newItem, setNewItem, setItemQuantity, setSelection] = React.useState("");
+const [itemList, setItemList] = React.useState([]);
+const[newItem, setNewItem] = React.useState("");
 
 React.useEffect(() => {
   getData();
@@ -16,7 +17,7 @@ React.useEffect(() => {
 
 const getData = async () => {
   try {
-    const value = await AsyncStorage.getItem('shoppingList')
+    const value = await AsyncStorage.getItem('FridgeList')
     if(value !== null) {
       setItemList(JSON.parse(value));
     } else {
@@ -29,9 +30,8 @@ const getData = async () => {
 
 const storeData = async () => {
   const stringifiedList = JSON.stringify(itemList);
-  await AsyncStorage.setItem('shoppingList', stringifiedList);
+  await AsyncStorage.setItem('FridgeList', stringifiedList);
 }
-
 
 return (
     <View style={styles.container}>
@@ -43,21 +43,27 @@ return (
           style={styles.input}
           onChangeText={text => setNewItem(text)}
           value={newItem}
-          placeholder="New Item..."
-        />
+          placeholder="New Item..."/>
         <TouchableOpacity 
-          onPress={() => setItemList([...itemList, newItem])}
-          style={styles.button}
-        >
+          onPress={() => {
+            setItemList([...itemList, newItem]);
+            setNewItem("");}}
+          style={styles.button}>
           <Text style={{color: '#FFF', textAlign: 'center'}}>Add</Text>
         </TouchableOpacity>
-        <View style={styles.itemList}>
-          {itemList.map((item) => (
-          <View style={styles.listItem}>
-          <Text style={{fontSize: 16}}>{item}</Text>
-    </View>
-  ))}
-</View>
+      </View>
+        <View style = {styles.itemList}>
+        {itemList.map((item, index) => (
+           <TouchableOpacity
+           onPress={() => {
+              let listCopy = itemList.slice()
+              listCopy.splice(index, 1);
+              setItemList(listCopy);
+            }}
+            style={styles.listItem}>
+            <Text style={{fontSize: 16}}>{item}</Text>
+          </TouchableOpacity>
+          ))}
     </View>
   </View>
 );
@@ -86,7 +92,7 @@ inputContainer: {
   },
   itemList: {
     marginTop: 20,
-    width: '50%'
+    width: '80%'
   },
   listItem: {
     width: '100%',
@@ -95,6 +101,19 @@ inputContainer: {
     backgroundColor: '#FFF',
     borderWidth: 1,
     borderColor: '#E5E5E5'
+  },
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#ecf0f1',
+    padding: 8,
   }
-
 });

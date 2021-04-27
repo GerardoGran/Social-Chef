@@ -7,7 +7,7 @@ export default function CreateAccount ({ navigation}){
 
   return (
     <View style={styles.container}>
-      <View style = {styles.logo}>Let's create your Account</View>
+      <Text style = {styles.logo}>Let's create your Account</Text>
       <View style = {styles.inputView}>
         <TextInput
         style = {styles.inputText}
@@ -66,7 +66,9 @@ const styles = StyleSheet.create({
     fontWeight:"bold",
     fontSize:50,
     color:"#fb5b5a",
-    marginBottom:40
+    marginBottom:40,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   inputView:{
     width:"80%",
