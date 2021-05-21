@@ -1,14 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, TextInput, FlatList, View} from 'react-native';
+import React, {useState, useEffect, setState} from 'react';
+import { StyleSheet, Text, TextInput, FlatList, View, Picker} from 'react-native';
 import {Searchbar} from 'react-native-paper';
+//import DropDownPicker from 'react-native-dropdown-picker';
 //import { List } from 'react-native-paper';
-
 const Search = ({navigation})=> {  
+  const [selectedValue, setSelectedValue] = useState("any");
+
+  //https://jsonplaceholder.typicode.com/posts
 
   useEffect(() => {
-    //fetch('https://localhost:3000/recipes')
-    fetch('https://jsonplaceholder.typicode.com/posts') //static json for testing
+    //fetch('https://localhost:3000/recipes')//json
+    /*
+    fetch("https://jsonplaceholder.typicode.com/posts") //static json for testing
       .then((response) => response.json())
       .then((responseJson) => {
         setFilteredDataSource(responseJson);
@@ -17,6 +21,9 @@ const Search = ({navigation})=> {
       .catch((error) => {
         console.error(error);
       });
+      */
+     setFilteredDataSource(json);
+     setMasterDataSource(json);
   }, []);
 
   const [search, setSearch] = useState('');
@@ -28,13 +35,21 @@ const Search = ({navigation})=> {
     if (text) {
       // Inserted text is not blank
       // Filter the masterDataSource
-      // Update FilteredDataSource
+      // Update FilteredDataSource            
+      
       const newData = masterDataSource.filter(function (item) {
-        const itemData = item.title
+        if (selectedValue == "any"){
+          const itemData = item.title
           ? item.title.toUpperCase()
           : ''.toUpperCase();
-        const textData = text.toUpperCase();
-        return itemData.indexOf(textData) > -1;
+          const textData = text.toUpperCase();
+          return itemData.indexOf(textData) > -1;
+        }
+        else if (selectedValue == "ingredients"){
+          const itemData = item.ingredients;
+          const textData = text.toUpperCase();
+          return itemData.find(key => key.toUpperCase() === textData) != undefined;
+        }        
       });
       setFilteredDataSource(newData);
       setSearch(text);
@@ -50,9 +65,7 @@ const Search = ({navigation})=> {
   const ItemView = ({ item }) => {
     return (
       // Flat List Item
-      <Text style={styles.itemStyle} onPress={() => getItem(item)}>
-        {item.id}
-        {'.'}
+      <Text style={styles.itemStyle} onPress={() => getItem(item)}>                
         {item.title.toUpperCase()}
       </Text>
     );
@@ -79,6 +92,13 @@ const Search = ({navigation})=> {
   return (
     <View style={styles.container}>          
       <View style = {styles.inputView}>
+      <Picker
+        selectedValue={selectedValue}     
+        onValueChange={itemValue => setSelectedValue(itemValue)}
+      >
+        <Picker.Item label="Relevance" value="any" />
+        <Picker.Item label="Ingredients" value="ingredients" />
+      </Picker>
         <Searchbar 
           round
           searchIcon={{ size: 24 }}
@@ -100,6 +120,13 @@ const Search = ({navigation})=> {
   );
 }
 
+//title, description, prepTime, cookTime, ingredients, instructions
+const json = [
+  {"title": "Recipe 1", "description":"learn to make a recipe 1", "prepTime": "20 mins", "cookTime":"50 mins", "ingredients":["Item","X","Y","Z","Test"],"instructions":["Step 1","Step 2","Step 3"]},
+  {"title": "Recipe 2", "description":"learn to make a recipe 2", "prepTime": "28 mins", "cookTime":"50 mins", "ingredients":["A","B","C",],"instructions":["Step 1","Step 2","Step 3"]},
+  {"title": "Recipe 3", "description":"learn to make a recipe 3", "prepTime": "15 mins", "cookTime":"30 mins", "ingredients":["D","E","F","Test"],"instructions":["Step 1","Step 2","Step 3"]},
+  {"title": "Recipe 4", "description":"learn to make a recipe 4", "prepTime": "0 mins", "cookTime":"10 mins", "ingredients":["Test"],"instructions":["Step 1","Step 2","Step 3"]},
+]
 
 const styles = StyleSheet.create({
   container: {
