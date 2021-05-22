@@ -26,7 +26,7 @@ export default function Login ({ navigation}){
         <Text style = {styles.forgot}>Forgot your Password?</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.loginBtn}
-      onPress = { ( ) => navigation.push("Login")}>
+      onPress = { ( ) => navigation.push("Home")}>
           <Text style={styles.loginText}>LOGIN</Text>
           </TouchableOpacity>
           <TouchableOpacity>
