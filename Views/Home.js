@@ -14,6 +14,10 @@ export default function Home({ navigation }) {
         onPress={() => navigation.push("CreateRecipe")}>
         <Text>Create Recipe</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.push("Search")}>
+        <Text>Search</Text>
+      </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
   );
