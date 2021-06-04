@@ -10,6 +10,7 @@ import Login from "./Views/LogIn";
 import Search from "./Views/Search";
 import Fridge from "./Views/Fridge";
 import CreateRecipe from "./Views/CreateRecipe";
+import RecipeScreen from "./Views/RecipeScreen";
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -22,6 +23,7 @@ export default function App() {
         <Stack.Screen name="CreateAccount" component={CreateAccount} />
         <Stack.Screen name="CreateRecipe" component={CreateRecipe} />
         <Stack.Screen name="Search" component={Search} />
+        <Stack.Screen name="RecipeScreen" component={RecipeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

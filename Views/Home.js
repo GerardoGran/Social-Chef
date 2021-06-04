@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import axios from '../axios';
 
 export default function Home({ navigation }) {
   return (
@@ -17,6 +18,15 @@ export default function Home({ navigation }) {
       <TouchableOpacity
         onPress={() => navigation.push("Search")}>
         <Text>Search</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          axios.get("/recipes")
+            .then((res) => {
+              navigation.push("RecipeScreen", res.data);
+            });
+        }}>
+        <Text>Read Example Recipe</Text>
       </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
