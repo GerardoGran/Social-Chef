@@ -4,6 +4,7 @@ import { StyleSheet, Text, TextInput, FlatList, View, Picker} from 'react-native
 import {Searchbar} from 'react-native-paper';
 //import DropDownPicker from 'react-native-dropdown-picker';
 //import { List } from 'react-native-paper';
+
 const Search = ({navigation})=> {  
   const [selectedValue, setSelectedValue] = useState("any");
 
@@ -115,7 +116,7 @@ const Search = ({navigation})=> {
           renderItem={ItemView}
         />        
       </View>      
-      <StatusBar style="auto" />
+      <StatusBar style="auto" />      
     </View>
   );
 }

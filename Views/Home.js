@@ -18,7 +18,7 @@ export default function Home({ navigation }) {
         onPress={() => navigation.push("Search")}>
         <Text>Search</Text>
       </TouchableOpacity>
-      <StatusBar style="auto" />
+      <StatusBar style="auto" />      
     </View>
   );
 }

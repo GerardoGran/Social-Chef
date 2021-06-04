@@ -61,8 +61,8 @@ export default function CreateRecipe() {
         <IngredientList handleIngredients={newIngredients => { setIngredients(newIngredients); }} />
         <InstructionList handleInstructions={newInstructions => { setInstructions(newInstructions); }} />
 
-        <Button mode='contained' onPress={submitRecipe}>SUBMIT</Button>
-      </ScrollView>
+        <Button mode='contained' onPress={submitRecipe}>SUBMIT</Button>        
+      </ScrollView>      
     </PaperProvider >
   );
 }
