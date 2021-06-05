@@ -1,7 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet} from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 
 import CreateAccount from './Views/CreateAccount';

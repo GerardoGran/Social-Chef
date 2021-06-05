@@ -2,8 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
+import Navigator from './Side-Navigation';
+
+
 export default function Home({ navigation }) {
   return (
+    <>
     <View style={styles.container}>
       <Text>You are at the home screen</Text>
       <TouchableOpacity
@@ -19,7 +23,9 @@ export default function Home({ navigation }) {
         <Text>Search</Text>
       </TouchableOpacity>
       <StatusBar style="auto" />
+
     </View>
+    </>
   );
 }
 
